@@ -120,4 +120,21 @@ typedef struct {
 #define COL_3	GPIOA_IDR_ptr->pin_1
 #define COL_4	GPIOA_IDR_ptr->pin_0
 
+#define ROW_1_PIN	pin_2
+#define ROW_2_PIN	pin_7
+#define ROW_3_PIN	pin_6
+#define ROW_4_PIN	pin_5
+#define COL_1_PIN	pin_4
+#define COL_2_PIN	pin_3
+#define COL_3_PIN	pin_1
+#define COL_4_PIN	pin_0
+
+#define DELAY	for(uint32_t i = 0; i < 50000; i++);
+#define WAIT_FOR_COL_1_UNPRESS while(COL_1 == PIN_STATE_LOW);
+#define WAIT_FOR_COL_2_UNPRESS while(COL_2 == PIN_STATE_LOW);
+#define WAIT_FOR_COL_3_UNPRESS while(COL_3 == PIN_STATE_LOW);
+#define WAIT_FOR_COL_4_UNPRESS while(COL_4 == PIN_STATE_LOW);
+
+extern void initialise_monitor_handles(void);
+
 #endif /* MAIN_H_ */

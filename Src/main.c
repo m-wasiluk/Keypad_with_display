@@ -20,8 +20,12 @@
 #include <stdio.h>
 #include "main.h"
 
+void wait_for_unpress(GPIOx_IDR_t *GPIOA_IDR_ptr);
+
 int main(void)
 {
+	initialise_monitor_handles();
+
 	// Variables initialization //
 	//////////////////////////////
 	//   Pointers to registers  //
@@ -57,54 +61,104 @@ int main(void)
 	ROW_4 = PIN_STATE_HIGH;
 
     /* Loop forever */
-	for(;;);
+	for(;;) {
 
-	//Read ROW_1
-	ROW_1 = PIN_STATE_LOW;
-	if(COL_1 == PIN_STATE_LOW)
-		printf("1\n");
-	if(COL_2 == PIN_STATE_LOW)
-		printf("2\n");
-	if(COL_3 == PIN_STATE_LOW)
-		printf("3\n");
-	if(COL_4 == PIN_STATE_LOW)
-		printf("A\n");
-	ROW_1 = PIN_STATE_HIGH;
+		//Read ROW_1
+		ROW_1 = PIN_STATE_LOW;
+		if(COL_1 == PIN_STATE_LOW) {
+			DELAY;
+			printf("1\n");
+			WAIT_FOR_COL_1_UNPRESS
+		}
+		if(COL_2 == PIN_STATE_LOW) {
+			DELAY;
+			printf("2\n");
+			WAIT_FOR_COL_2_UNPRESS
+		}
+		if(COL_3 == PIN_STATE_LOW) {
+			DELAY;
+			printf("3\n");
+			WAIT_FOR_COL_3_UNPRESS
+		}
+		if(COL_4 == PIN_STATE_LOW) {
+			DELAY;
+			printf("A\n");
+			WAIT_FOR_COL_4_UNPRESS
+		}
+		ROW_1 = PIN_STATE_HIGH;
 
-	//Read ROW_2
-	ROW_2 = PIN_STATE_LOW;
-	if(COL_1 == PIN_STATE_LOW)
-		printf("4\n");
-	if(COL_2 == PIN_STATE_LOW)
-		printf("5\n");
-	if(COL_3 == PIN_STATE_LOW)
-		printf("6\n");
-	if(COL_4 == PIN_STATE_LOW)
-		printf("B\n");
-	ROW_2 = PIN_STATE_HIGH;
+		//Read ROW_2
+		ROW_2 = PIN_STATE_LOW;
+		if(COL_1 == PIN_STATE_LOW) {
+			DELAY;
+			printf("4\n");
+			WAIT_FOR_COL_1_UNPRESS
+		}
+		if(COL_2 == PIN_STATE_LOW) {
+			DELAY;
+			printf("5\n");
+			WAIT_FOR_COL_2_UNPRESS
+		}
+		if(COL_3 == PIN_STATE_LOW) {
+			DELAY;
+			printf("6\n");
+			WAIT_FOR_COL_3_UNPRESS
+		}
+		if(COL_4 == PIN_STATE_LOW) {
+			DELAY;
+			printf("B\n");
+			WAIT_FOR_COL_4_UNPRESS
+		}
+		ROW_2 = PIN_STATE_HIGH;
 
-	//Read ROW_3
-	ROW_3 = PIN_STATE_LOW;
-	if(COL_1 == PIN_STATE_LOW)
-		printf("7\n");
-	if(COL_2 == PIN_STATE_LOW)
-		printf("8\n");
-	if(COL_3 == PIN_STATE_LOW)
-		printf("9\n");
-	if(COL_4 == PIN_STATE_LOW)
-		printf("C\n");
-	ROW_3 = PIN_STATE_HIGH;
+		//Read ROW_3
+		ROW_3 = PIN_STATE_LOW;
+		if(COL_1 == PIN_STATE_LOW) {
+			DELAY;
+			printf("7\n");
+			WAIT_FOR_COL_1_UNPRESS
+		}
+		if(COL_2 == PIN_STATE_LOW) {
+			DELAY;
+			printf("8\n");
+			WAIT_FOR_COL_2_UNPRESS
+		}
+		if(COL_3 == PIN_STATE_LOW) {
+			DELAY;
+			printf("9\n");
+			WAIT_FOR_COL_3_UNPRESS
+		}
+		if(COL_4 == PIN_STATE_LOW) {
+			DELAY;
+			printf("C\n");
+			WAIT_FOR_COL_4_UNPRESS
+		}
+		ROW_3 = PIN_STATE_HIGH;
 
-	//Read ROW_4
-	ROW_4 = PIN_STATE_LOW;
-	if(COL_1 == PIN_STATE_LOW)
-		printf("*\n");
-	if(COL_2 == PIN_STATE_LOW)
-		printf("0\n");
-	if(COL_3 == PIN_STATE_LOW)
-		printf("#\n");
-	if(COL_4 == PIN_STATE_LOW)
-		printf("D\n");
-	ROW_4 = PIN_STATE_HIGH;
+		//Read ROW_4
+		ROW_4 = PIN_STATE_LOW;
+		if(COL_1 == PIN_STATE_LOW) {
+			DELAY;
+			printf("*\n");
+			WAIT_FOR_COL_1_UNPRESS
+		}
+		if(COL_2 == PIN_STATE_LOW) {
+			DELAY;
+			printf("0\n");
+			WAIT_FOR_COL_2_UNPRESS
+		}
+		if(COL_3 == PIN_STATE_LOW) {
+			DELAY;
+			printf("#\n");
+			WAIT_FOR_COL_3_UNPRESS
+		}
+		if(COL_4 == PIN_STATE_LOW) {
+			DELAY;
+			printf("D\n");
+			WAIT_FOR_COL_4_UNPRESS
+		}
+		ROW_4 = PIN_STATE_HIGH;
+
+	}
 
 }

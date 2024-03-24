@@ -4,3 +4,5 @@
 STM32L432KCUX_FLASH.ld
 Startup/
 Debug/
+Keypad_with_display Debug.cfg
+Keypad_with_display Debug.launch
