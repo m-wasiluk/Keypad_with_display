@@ -17,13 +17,94 @@
  */
 
 #include <stdint.h>
-
-#if !defined(__SOFT_FP__) && defined(__ARM_FP)
-  #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
-#endif
+#include <stdio.h>
+#include "main.h"
 
 int main(void)
 {
+	// Variables initialization //
+	//////////////////////////////
+	//   Pointers to registers  //
+	RCC_AHB2ENR_t volatile * const RCC_AHB2ENR_ptr 		 = ADDR_RCC_AHB2ENR;
+	GPIOx_MODER_t volatile * const GPIOA_MODER_ptr 		 = ADDR_GPIOA_MODER;
+	GPIOx_PUPDR_t volatile * const GPIOA_PUPDR_ptr 		 = ADDR_GPIOA_PUPDR;
+	GPIOx_ODR_t   volatile * const GPIOA_ODR_ptr   		 = ADDR_GPIOA_ODR;
+	GPIOx_IDR_t   volatile const * const GPIOA_IDR_ptr   = ADDR_GPIOA_IDR;
+
+	//Enable RCC for GPIOA
+	RCC_AHB2ENR_ptr->GPIOAEN = PIN_STATE_HIGH;
+
+	//Set ROWS to OUTPUT and COLS to INPUT
+	GPIOA_MODER_ptr->pin_2 = PIN_MODE_OUTPUT;
+	GPIOA_MODER_ptr->pin_7 = PIN_MODE_OUTPUT;
+	GPIOA_MODER_ptr->pin_6 = PIN_MODE_OUTPUT;
+	GPIOA_MODER_ptr->pin_5 = PIN_MODE_OUTPUT;
+	GPIOA_MODER_ptr->pin_4 = PIN_MODE_INPUT;
+	GPIOA_MODER_ptr->pin_3 = PIN_MODE_INPUT;
+	GPIOA_MODER_ptr->pin_1 = PIN_MODE_INPUT;
+	GPIOA_MODER_ptr->pin_0 = PIN_MODE_INPUT;
+
+	//Enable pull-up resistor for COLS
+	GPIOA_PUPDR_ptr->pin_4 = PIN_PULL_UP_EN;
+	GPIOA_PUPDR_ptr->pin_3 = PIN_PULL_UP_EN;
+	GPIOA_PUPDR_ptr->pin_1 = PIN_PULL_UP_EN;
+	GPIOA_PUPDR_ptr->pin_0 = PIN_PULL_UP_EN;
+
+	//Set all ROWs to HIGH state
+	ROW_1 = PIN_STATE_HIGH;
+	ROW_2 = PIN_STATE_HIGH;
+	ROW_3 = PIN_STATE_HIGH;
+	ROW_4 = PIN_STATE_HIGH;
+
     /* Loop forever */
 	for(;;);
+
+	//Read ROW_1
+	ROW_1 = PIN_STATE_LOW;
+	if(COL_1 == PIN_STATE_LOW)
+		printf("1\n");
+	if(COL_2 == PIN_STATE_LOW)
+		printf("2\n");
+	if(COL_3 == PIN_STATE_LOW)
+		printf("3\n");
+	if(COL_4 == PIN_STATE_LOW)
+		printf("A\n");
+	ROW_1 = PIN_STATE_HIGH;
+
+	//Read ROW_2
+	ROW_2 = PIN_STATE_LOW;
+	if(COL_1 == PIN_STATE_LOW)
+		printf("4\n");
+	if(COL_2 == PIN_STATE_LOW)
+		printf("5\n");
+	if(COL_3 == PIN_STATE_LOW)
+		printf("6\n");
+	if(COL_4 == PIN_STATE_LOW)
+		printf("B\n");
+	ROW_2 = PIN_STATE_HIGH;
+
+	//Read ROW_3
+	ROW_3 = PIN_STATE_LOW;
+	if(COL_1 == PIN_STATE_LOW)
+		printf("7\n");
+	if(COL_2 == PIN_STATE_LOW)
+		printf("8\n");
+	if(COL_3 == PIN_STATE_LOW)
+		printf("9\n");
+	if(COL_4 == PIN_STATE_LOW)
+		printf("C\n");
+	ROW_3 = PIN_STATE_HIGH;
+
+	//Read ROW_4
+	ROW_4 = PIN_STATE_LOW;
+	if(COL_1 == PIN_STATE_LOW)
+		printf("*\n");
+	if(COL_2 == PIN_STATE_LOW)
+		printf("0\n");
+	if(COL_3 == PIN_STATE_LOW)
+		printf("#\n");
+	if(COL_4 == PIN_STATE_LOW)
+		printf("D\n");
+	ROW_4 = PIN_STATE_HIGH;
+
 }

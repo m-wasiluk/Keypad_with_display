@@ -3,3 +3,4 @@
 .settings/
 STM32L432KCUX_FLASH.ld
 Startup/
+Debug/
