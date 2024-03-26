@@ -21,25 +21,33 @@ GPIOA_IDR       0x48000010
 GPIOA_ODR       0x48000014
 
 ::DISPLAY::
-PIN_FUNCTION    PIN_NUMBER
-RS           PA12
-RW           PB0
-E            PB7
-D0           PB6
-D1           PB1
-D2           PC14
-D3           PC15
+PIN_FUNCTION    PIN_NUMBER    OUTPUT/INPUT
+RS              PA12          OUTPUT
+RW              PB0           OUTPUT
+E               PB7           OUTPUT
+D4              PB6           OUTPUT
+D5              PB1           OUTPUT
+D6              PC14          OUTPUT
+D7              PC15          OUTPUT/INPUT
 
 PERIPHERAL      BASE_ADDRESS
 RCC             0x40021000
 GPIOA           0x48000000
-GPIOB           0x48000000
-GPIOC           0x48000000
+GPIOB           0x48000400
+GPIOC           0x48000800
 
 REG_FUNC        ADDRESS
 RCC_AHB2ENR     0x4002104C
+
 GPIOA_MODER     0x48000000
 GPIOA_PUPDR     0x4800000C
 GPIOA_IDR       0x48000010
 GPIOA_ODR       0x48000014
 
+GPIOB_MODER     0x48000400
+GPIOB_IDR       0x48000410
+GPIOB_ODR       0x48000414
+
+GPIOC_MODER     0x48000800
+GPIOC_IDR       0x48000810
+GPIOC_ODR       0x48000814
