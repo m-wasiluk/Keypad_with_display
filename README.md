@@ -20,31 +20,40 @@ GPIOA_PUPDR     0x4800000C
 GPIOA_IDR       0x48000010
 GPIOA_ODR       0x48000014
 
+-- do wyrzutu to powyżej --
+
 ::DISPLAY::
 PIN_FUNCTION    PIN_NUMBER    OUTPUT/INPUT
-RS              PA12          OUTPUT
-RW              PB0           OUTPUT
-E               PB7           OUTPUT
-D4              PB6           OUTPUT
-D5              PB1           OUTPUT
-D6              PB5           OUTPUT
-D7              PB4           OUTPUT/INPUT
+RS              PH1           OUTPUT
+RW              PC15          OUTPUT
+E               PC13          OUTPUT
+D4              PE5           OUTPUT
+D5              PE3           OUTPUT
+D6              PE1           OUTPUT
+D7              PB9           OUTPUT/INPUT
 
 PERIPHERAL      BASE_ADDRESS
-RCC             0x40021000
-GPIOA           0x48000000
-GPIOB           0x48000400
-GPIOC           0x48000800
+RCC             0x40023800
+GPIOB           0x40020400
+GPIOC           0x40020800
+GPIOE           0x40021000
+GPIOH           0x40021C00
 
 REG_FUNC        ADDRESS
-RCC_AHB2ENR     0x4002104C
+RCC_AHB1ENR     0x40023830
 
-GPIOA_MODER     0x48000000
-GPIOA_PUPDR     0x4800000C
-GPIOA_IDR       0x48000010
-GPIOA_ODR       0x48000014
+GPIOB_MODER     0x40020400
+GPIOB_PUPDR     0x40020400
+GPIOB_ODR       0x40020400
 
-GPIOB_MODER     0x48000400
-GPIOB_PUPDR     0x4800040C
-GPIOB_IDR       0x48000410
-GPIOB_ODR       0x48000414
+GPIOC_MODER     0x40020800
+GPIOC_PUPDR     0x40020800
+GPIOC_ODR       0x40020800
+
+GPIOE_MODER     0x40021000
+GPIOE_PUPDR     0x40021000
+GPIOE_ODR       0x40021000
+
+GPIOH_MODER     0x40021C00
+GPIOH_PUPDR     0x40021C00
+GPIOH_ODR       0x40021C00
