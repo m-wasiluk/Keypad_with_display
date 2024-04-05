@@ -27,8 +27,8 @@ RW              PB0           OUTPUT
 E               PB7           OUTPUT
 D4              PB6           OUTPUT
 D5              PB1           OUTPUT
-D6              PC14          OUTPUT
-D7              PC15          OUTPUT/INPUT
+D6              PB5           OUTPUT
+D7              PB4           OUTPUT/INPUT
 
 PERIPHERAL      BASE_ADDRESS
 RCC             0x40021000
@@ -45,9 +45,6 @@ GPIOA_IDR       0x48000010
 GPIOA_ODR       0x48000014
 
 GPIOB_MODER     0x48000400
+GPIOB_PUPDR     0x4800040C
 GPIOB_IDR       0x48000410
 GPIOB_ODR       0x48000414
-
-GPIOC_MODER     0x48000800
-GPIOC_IDR       0x48000810
-GPIOC_ODR       0x48000814
